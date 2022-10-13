@@ -13,37 +13,32 @@ class Boton extends StatelessWidget {
     this.big = false,
     required this.text,
     required this.onPressed,
-  })  : this.bgColor = bgColor ?? Colors.blue,
+    required Color color,
+  })  : bgColor = bgColor ?? const Color.fromARGB(255, 20, 20, 20),
         super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle = TextButton.styleFrom(
+    final buttonStyle = TextButton.styleFrom(
       backgroundColor: bgColor,
-      primary: Colors.black,
-      shape: StadiumBorder(),
-      // padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+      primary: Color.fromARGB(255, 248, 245, 245),
+      shape: const StadiumBorder(),
     );
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+      margin: const EdgeInsets.only(bottom: 10, right: 5, left: 5),
       child: TextButton(
-        style: ButtonStyle,
-        // ignore: sort_child_properties_last
+        style: buttonStyle,
         child: Container(
           width: big ? 150 : 65,
           height: 65,
           child: Center(
-            child: Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.w200,
-              ),
-            ),
-          ),
+              child: Text(
+            text,
+            style: const TextStyle(fontSize: 27, fontWeight: FontWeight.w300),
+          )),
         ),
-        onPressed: (() => this.onPressed(text)),
+        onPressed: () => this.onPressed(),
       ),
     );
   }
